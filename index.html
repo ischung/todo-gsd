@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>달력 Todo</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="calendar.js" defer></script>
+  <script src="todo.js" defer></script>
+</head>
+<body>
+  <!-- Phase 1 셸: 달력만. Todo 패널은 Phase 2에서 추가. -->
+  <main class="calendar">
+    <header class="calendar__header">
+      <button id="cal-prev" type="button" class="nav-btn" aria-label="이전 달">‹ 이전 달</button>
+      <h1 id="cal-title" class="calendar__title">YYYY년 M월</h1>
+      <button id="cal-today" type="button" class="nav-btn nav-btn--today">오늘</button>
+      <button id="cal-next" type="button" class="nav-btn" aria-label="다음 달">다음 달 ›</button>
+    </header>
+
+    <div class="weekday-header" role="row">
+      <div class="weekday-header__cell" role="columnheader">일</div>
+      <div class="weekday-header__cell" role="columnheader">월</div>
+      <div class="weekday-header__cell" role="columnheader">화</div>
+      <div class="weekday-header__cell" role="columnheader">수</div>
+      <div class="weekday-header__cell" role="columnheader">목</div>
+      <div class="weekday-header__cell" role="columnheader">금</div>
+      <div class="weekday-header__cell" role="columnheader">토</div>
+    </div>
+
+    <div id="cal-grid" class="calendar__grid" role="grid" aria-labelledby="cal-title"></div>
+  </main>
+
+  <!-- Phase 2: 날짜 클릭 시 열리는 인라인 Todo 패널. todo.js가 보임/숨김과 내용을 제어. -->
+  <aside id="todo-panel"
+         class="todo-panel"
+         hidden
+         aria-labelledby="todo-panel-title">
+    <header class="todo-panel__header">
+      <h2 id="todo-panel-title" class="todo-panel__title">날짜를 선택하세요</h2>
+      <button id="todo-panel-close" type="button" class="nav-btn" aria-label="패널 닫기">×</button>
+    </header>
+
+    <form id="todo-form" class="todo-panel__form" autocomplete="off">
+      <input id="todo-input"
+             class="todo-panel__input"
+             type="text"
+             maxlength="200"
+             placeholder="할 일을 입력하세요"
+             aria-label="새 할 일">
+      <button id="todo-add" type="submit" class="nav-btn">추가</button>
+    </form>
+
+    <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+  </aside>
+</body>
+</html>
