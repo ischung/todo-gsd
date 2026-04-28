@@ -1,69 +1,35 @@
 # Roadmap: 개인용 달력 Todo 앱
 
 **Created:** 2026-04-28
-**Last updated:** 2026-04-28 (milestone v1.1 added)
+**Last updated:** 2026-04-28 — v1.1 Phase 3 shipped
 **Granularity:** Coarse
 
-## Overview
+## Milestones
 
-| # | Phase | Milestone | Goal | Requirements | Status |
-|---|-------|-----------|------|--------------|--------|
-| 1 | 달력 셸 | v1 | 월간 달력 UI를 화면에 띄우고 월 이동/오늘 강조까지 동작 | CAL-01, CAL-02, CAL-04 | ✓ Complete |
-| 2 | Todo + 영속화 | v1 | 날짜별 할 일 CRUD와 개수 배지, localStorage 영속화 완성 | CAL-03, TODO-01~04, PERSIST-01 | ✓ Complete |
-| 3 | 디자인 토큰 + 시각 다듬기 | v1.1 | 라이트 미니멀 톤 디자인 토큰 도입, 오늘/다른 달 셀 시각 정돈 | VIS-01, VIS-02, VIS-03 | ✓ Complete |
-| 4 | 인터랙션 + 정보 밀도 | v1.1 | 완료 표현·즉시 삭제·IME-안전 입력 흐름과 셀 정보 밀도 | INT-01~04, INFO-01, INFO-02 | ○ Pending |
-| 5 | 키보드 / 접근성 | v1.1 | 단축키·그리드 키보드 네비·ARIA 정책 완비 | A11Y-01~08 | ○ Pending |
+- ✅ **v1 MVP** — Phases 1-2 (shipped 2026-04-28) → see `.planning/milestones/v1-ROADMAP.md`
+- 🟢 **v1.1 UX 다듬기** — Phases 3-5 (Phase 3 shipped 2026-04-28; Phase 4/5 pending)
 
----
+## Active Phases (v1.1)
 
-## Phase 1: 달력 셸 (v1)
-
-**Status:** ✓ Complete (커밋 `e6c8d25`)
-
-**Goal:** 사용자가 월간 달력을 보고, 이전/다음 달로 이동할 수 있으며, 오늘 날짜가 강조되어 보이는 정적 UI를 완성한다.
-
-**Requirements:** CAL-01, CAL-02, CAL-04
-
----
-
-## Phase 2: Todo + 영속화 (v1)
-
-**Status:** ✓ Complete (커밋 `72376b1`)
-
-**Goal:** 날짜를 클릭해 할 일을 추가/완료/삭제할 수 있고, 각 날짜 셀에 개수가 표시되며, 새로고침해도 모든 데이터가 유지된다.
-
-**Requirements:** CAL-03, TODO-01, TODO-02, TODO-03, TODO-04, PERSIST-01
+| # | Phase | Goal | Requirements | Status |
+|---|-------|------|--------------|--------|
+| 3 | 디자인 토큰 + 시각 다듬기 | 라이트 미니멀 톤 디자인 토큰 도입, 오늘/다른 달 셀 시각 정돈 | VIS-01, VIS-02, VIS-03 | ✓ Complete |
+| 4 | 인터랙션 + 정보 밀도 | 완료 표현·즉시 삭제·IME-안전 입력 흐름과 셀 정보 밀도 | INT-01~04, INFO-01, INFO-02 | ○ Pending |
+| 5 | 키보드 / 접근성 | 단축키·그리드 키보드 네비·ARIA 정책 완비 | A11Y-01~08 | ○ Pending |
 
 ---
 
 ## Phase 3: 디자인 토큰 + 시각 다듬기 (v1.1)
 
+**Status:** ✓ Complete (PR #3, UAT 8/8)
+
 **Goal:** 사용자가 페이지를 처음 보았을 때 라이트 미니멀 톤이 일관되게 적용되어 있고, 오늘 날짜는 충분한 대비로 강조되며, 다른 달 셀은 흐리지만 클릭 가능함이 명확히 느껴진다.
 
 **Requirements:** VIS-01, VIS-02, VIS-03
 
-**Depends on:** Phase 2
-
-**UI hint:** yes (CSS only)
-
-**Success criteria:**
-1. `:root`에 8–12개 디자인 토큰(CSS custom properties)이 정의되고 모든 색상 리터럴이 토큰으로 치환되어, 한 곳을 바꾸면 전 화면이 따라 변한다.
-2. 오늘 날짜 셀은 라이트 톤 배경색으로 채워지고 글자색과의 대비가 WCAG AA(4.5:1) 이상이다 (DevTools Contrast checker로 검증).
-3. 이번 달이 아닌 셀은 톤다운된 색상으로 흐리게 표시되되 `opacity`는 사용하지 않으며(어포던스 유지), 클릭 시 그 날짜의 todo 패널이 정상적으로 열린다.
-4. 헤더/네비게이션 버튼/요일 헤더/배지 등 모든 UI 요소가 일관된 라이트 미니멀 톤으로 통일된다 (단일 색상 일관성 검사 통과).
-
-**Deliverables:**
-- `styles.css` — `:root` 토큰 섹션 추가, 색상 리터럴 토큰 치환, `.day--today`/`.day--other-month` 스타일 정돈
-- `index.html`/JS 0줄 변경 (CSS only 페이즈)
-
 **Plans:** 2 plans
 - [x] 03-01-tokens-refactor-PLAN.md — `:root` 12개 semantic 토큰 도입 + 색 리터럴 1:1 치환 (시각 무변경)
 - [x] 03-02-visual-polish-PLAN.md — soft blue 토큰 값 + 오늘/다른 달 셀 재구성 (WCAG AA, opacity 금지)
-
-**Guards (PITFALLS 인용):**
-- localStorage 키/스키마 무변경: `grep "todo-gsd:v" todo.js` 1줄, `grep "SCHEMA_VERSION" todo.js` 결과 변화 없음
-- 다른 달 셀에 `opacity` 사용 금지 — 색상 토큰만 사용
-- 오늘 셀의 글자 대비 4.5:1 이상
 
 ---
 
@@ -136,24 +102,34 @@
 ## Dependencies
 
 ```
-v1:
+v1 (archived):
   Phase 1 (달력 셸) ✓
      └─> Phase 2 (Todo + 영속화) ✓
 
 v1.1:
-            └─> Phase 3 (디자인 토큰 + 시각)
+            └─> Phase 3 (디자인 토큰 + 시각) ✓
                    └─> Phase 4 (인터랙션 + 정보 밀도)
                           └─> Phase 5 (키보드 / 접근성)
 ```
 
-직렬 의존: A의 토큰 위에 B/C가 색을 사용하고, B의 `isAllDone`/`.day--all-done` 위에 C가 `aria-label`을 합성한다.
+직렬 의존: Phase 3 토큰 위에 Phase 4가 색을 사용하고, Phase 4의 `isAllDone`/`.day--all-done` 위에 Phase 5가 `aria-label`을 합성한다.
+
+## Progress
+
+| Phase | Milestone | Plans | Status | Completed |
+|-------|-----------|-------|--------|-----------|
+| 1. 달력 셸 | v1 | 3/3 | Complete | 2026-04-28 |
+| 2. Todo + 영속화 | v1 | 3/3 | Complete | 2026-04-28 |
+| 3. 디자인 토큰 + 시각 다듬기 | v1.1 | 2/2 | Complete | 2026-04-28 |
+| 4. 인터랙션 + 정보 밀도 | v1.1 | 0 | Pending | — |
+| 5. 키보드 / 접근성 | v1.1 | 0 | Pending | — |
 
 ## Coverage
 
-- v1 requirements: 9/9 mapped to Phases 1–2 ✓ (모두 Complete)
-- v1.1 requirements: 17/17 mapped to Phases 3–5 ✓
+- v1 requirements: 9/9 mapped to Phases 1–2 ✓ (모두 Validated)
+- v1.1 requirements: 17/17 mapped to Phases 3–5 (VIS 3/3 Complete, INT/INFO/A11Y 14 Pending)
 - Total: 26 mapped, 0 unmapped
 
 ---
 *Roadmap created: 2026-04-28*
-*Last updated: 2026-04-28 — v1.1 phases (3, 4, 5) added*
+*Last updated: 2026-04-28 — v1.1 Phase 3 shipped*

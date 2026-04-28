@@ -2,7 +2,11 @@
 
 ## What This Is
 
-월간 달력 화면에서 날짜를 클릭해 그 날짜의 할 일을 추가/완료/삭제할 수 있는 1인용 웹 앱. 각 날짜 셀에는 할 일 개수가 표시되며, 새로고침해도 데이터가 유지된다.
+월간 달력 화면에서 날짜를 클릭해 그 날짜의 할 일을 추가/완료/삭제할 수 있는 1인용 정적 웹 앱. 각 날짜 셀에는 할 일 개수가 99+ 클램프와 함께 표시되며, localStorage 기반으로 새로고침해도 데이터가 유지된다.
+
+## Current State
+
+**Shipped:** v1 MVP (2026-04-28) — 모든 9개 v1 요구사항 Validated. 672 LOC, 4 files, UAT 14/14 pass.
 
 ## Core Value
 
@@ -24,22 +28,22 @@
 
 <!-- Shipped and confirmed valuable. -->
 
-- ✓ 월간 달력 뷰 표시 및 월 이동 — Phase 1
-- ✓ 날짜 클릭 시 해당 날짜의 할 일 목록 보기 — Phase 2
-- ✓ 할 일 추가 — Phase 2
-- ✓ 할 일 완료 토글 — Phase 2
-- ✓ 할 일 삭제 — Phase 2
-- ✓ 각 날짜 셀에 할 일 개수 표시 — Phase 2
-- ✓ 새로고침 후에도 데이터 유지 (localStorage) — Phase 2
+- [x] 월간 달력 뷰 표시 및 월 이동 — Phase 1 UAT 통과 (2026-04-28, CAL-01/02/04)
+- [x] 날짜 클릭 시 해당 날짜의 할 일 목록 보기 — Phase 2 UAT 통과 (2026-04-28, TODO-01)
+- [x] 할 일 추가 — Phase 2 UAT 통과 (2026-04-28, TODO-02)
+- [x] 할 일 완료 토글 — Phase 2 UAT 통과 (2026-04-28, TODO-03)
+- [x] 할 일 삭제 — Phase 2 UAT 통과 (2026-04-28, TODO-04)
+- [x] 각 날짜 셀에 할 일 개수 표시 (99+ 클램프) — Phase 2 UAT 통과 (2026-04-28, CAL-03)
+- [x] 새로고침 후에도 데이터 유지 (localStorage) — Phase 2 UAT 통과 (2026-04-28, PERSIST-01)
+- [x] 디자인 토큰 + 라이트 미니멀 톤 (오늘 셀 soft 배경 + 진한 액센트, 다른 달 muted) — Phase 3 UAT 통과 (2026-04-28, VIS-01/02/03)
 
 ### Active
 
 <!-- Current scope. Building toward these in v1.1. -->
 
-- [ ] 달력 시각 디자인 다듬기 (오늘 강조, 다른 달 셀, 컬러 톤)
-- [ ] 할 일 패널 인터랙션 다듬기 (완료 표현, 삭제 동작, 입력 흐름)
-- [ ] 날짜 셀 정보 밀도 향상 (배지 스타일, 모두 완료 표시)
-- [ ] 키보드 단축키 및 접근성 (←/→/T, 방향키 네비, aria)
+- [ ] 할 일 패널 인터랙션 다듬기 (완료 표현, 삭제 동작, 입력 흐름) — Phase 4
+- [ ] 날짜 셀 정보 밀도 향상 (배지 스타일, 모두 완료 표시) — Phase 4
+- [ ] 키보드 단축키 및 접근성 (←/→/T, 방향키 네비, aria) — Phase 5
 
 ### Out of Scope
 
@@ -69,9 +73,13 @@
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| localStorage 사용 | 1인용·새로고침 유지 요구 충족, 백엔드 불필요 | ✓ Good (Phase 2 검증) |
-| 정적 웹 앱(HTML/CSS/JS) | 범위가 작아 프레임워크 오버헤드 회피 | ✓ Good |
-| v1.1은 UX 다듬기로 한정 | 기능 추가 전에 매일 쓰기 좋은 완성도 확보 | — Pending |
+| localStorage 사용 | 1인용·새로고침 유지 요구 충족, 백엔드 불필요 | ✓ Validated (Phase 2) |
+| 정적 웹 앱(HTML/CSS/JS) | 범위가 작아 프레임워크 오버헤드 회피 | ✓ Validated (Phase 1, 2) |
+| 배지 카운트 99+ 클램프 | 한 날짜 100개 이상 시 레이아웃 보호 | ✓ Validated (Phase 2) |
+| innerHTML + escapeHtml | XSS 방어를 데이터 레이어에서 차단 | ✓ Validated (Phase 2) |
+| Semantic only 디자인 토큰(12개) | primitive 팔레트 없이 역할 기반 — 한 곳 바꾸면 전 화면 따라옴 | ✓ Validated (Phase 3) |
+| 다른 달 셀에 opacity 금지, 색상 토큰만 | 어포던스 보존 (3중 muting 회피) | ✓ Validated (Phase 3) |
+| v1.1은 UX 다듬기로 한정 | 기능 추가 전에 매일 쓰기 좋은 완성도 확보 | — Pending (Phase 4/5) |
 | 다크 모드 보류 | 테마 시스템 도입은 별도 마일스톤 가치 | — Pending |
 
 ## Evolution
@@ -92,4 +100,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-28 after starting milestone v1.1*
+*Last updated: 2026-04-28 — v1 milestone archived, v1.1 Phase 3 shipped*
