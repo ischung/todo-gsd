@@ -56,6 +56,10 @@
 - `styles.css` — `:root` 토큰 섹션 추가, 색상 리터럴 토큰 치환, `.day--today`/`.day--other-month` 스타일 정돈
 - `index.html`/JS 0줄 변경 (CSS only 페이즈)
 
+**Plans:** 2 plans
+- [ ] 03-01-tokens-refactor-PLAN.md — `:root` 12개 semantic 토큰 도입 + 색 리터럴 1:1 치환 (시각 무변경)
+- [ ] 03-02-visual-polish-PLAN.md — soft blue 토큰 값 + 오늘/다른 달 셀 재구성 (WCAG AA, opacity 금지)
+
 **Guards (PITFALLS 인용):**
 - localStorage 키/스키마 무변경: `grep "todo-gsd:v" todo.js` 1줄, `grep "SCHEMA_VERSION" todo.js` 결과 변화 없음
 - 다른 달 셀에 `opacity` 사용 금지 — 색상 토큰만 사용
