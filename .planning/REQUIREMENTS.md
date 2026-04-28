@@ -27,9 +27,9 @@
 
 ### Visual (시각 디자인)
 
-- [ ] **VIS-01**: 오늘 날짜 셀이 배경색 채우기로 강조된다 (라이트 톤 액센트 배경 + WCAG 4.5:1 이상 대비 글자색)
-- [ ] **VIS-02**: 이번 달이 아닌 셀(앞/뒤 달 채우기)이 톤다운된 색상으로 흐리게 표시되되 클릭은 그대로 가능하다 (opacity 미사용 — 색상 토큰으로 처리)
-- [ ] **VIS-03**: 라이트 미니멀 톤의 디자인 토큰(`:root` CSS custom properties)이 정의되고, 색상/배경/테두리 모든 시각 속성이 토큰을 통해 일원화된다
+- [x] **VIS-01**: 오늘 날짜 셀이 배경색 채우기로 강조된다 (라이트 톤 액센트 배경 + WCAG 4.5:1 이상 대비 글자색)
+- [x] **VIS-02**: 이번 달이 아닌 셀(앞/뒤 달 채우기)이 톤다운된 색상으로 흐리게 표시되되 클릭은 그대로 가능하다 (opacity 미사용 — 색상 토큰으로 처리)
+- [x] **VIS-03**: 라이트 미니멀 톤의 디자인 토큰(`:root` CSS custom properties)이 정의되고, 색상/배경/테두리 모든 시각 속성이 토큰을 통해 일원화된다
 
 ### Interaction (할 일 패널 인터랙션)
 
@@ -95,9 +95,9 @@
 | TODO-03 | Phase 2 | ✓ Complete |
 | TODO-04 | Phase 2 | ✓ Complete |
 | PERSIST-01 | Phase 2 | ✓ Complete |
-| VIS-01 | Phase 3 | Pending |
-| VIS-02 | Phase 3 | Pending |
-| VIS-03 | Phase 3 | Pending |
+| VIS-01 | Phase 3 | ✓ Complete |
+| VIS-02 | Phase 3 | ✓ Complete |
+| VIS-03 | Phase 3 | ✓ Complete |
 | INT-01 | Phase 4 | Pending |
 | INT-02 | Phase 4 | Pending |
 | INT-03 | Phase 4 | Pending |

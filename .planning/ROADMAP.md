@@ -10,7 +10,7 @@
 |---|-------|-----------|------|--------------|--------|
 | 1 | 달력 셸 | v1 | 월간 달력 UI를 화면에 띄우고 월 이동/오늘 강조까지 동작 | CAL-01, CAL-02, CAL-04 | ✓ Complete |
 | 2 | Todo + 영속화 | v1 | 날짜별 할 일 CRUD와 개수 배지, localStorage 영속화 완성 | CAL-03, TODO-01~04, PERSIST-01 | ✓ Complete |
-| 3 | 디자인 토큰 + 시각 다듬기 | v1.1 | 라이트 미니멀 톤 디자인 토큰 도입, 오늘/다른 달 셀 시각 정돈 | VIS-01, VIS-02, VIS-03 | ○ Pending |
+| 3 | 디자인 토큰 + 시각 다듬기 | v1.1 | 라이트 미니멀 톤 디자인 토큰 도입, 오늘/다른 달 셀 시각 정돈 | VIS-01, VIS-02, VIS-03 | ✓ Complete |
 | 4 | 인터랙션 + 정보 밀도 | v1.1 | 완료 표현·즉시 삭제·IME-안전 입력 흐름과 셀 정보 밀도 | INT-01~04, INFO-01, INFO-02 | ○ Pending |
 | 5 | 키보드 / 접근성 | v1.1 | 단축키·그리드 키보드 네비·ARIA 정책 완비 | A11Y-01~08 | ○ Pending |
 
@@ -57,8 +57,8 @@
 - `index.html`/JS 0줄 변경 (CSS only 페이즈)
 
 **Plans:** 2 plans
-- [ ] 03-01-tokens-refactor-PLAN.md — `:root` 12개 semantic 토큰 도입 + 색 리터럴 1:1 치환 (시각 무변경)
-- [ ] 03-02-visual-polish-PLAN.md — soft blue 토큰 값 + 오늘/다른 달 셀 재구성 (WCAG AA, opacity 금지)
+- [x] 03-01-tokens-refactor-PLAN.md — `:root` 12개 semantic 토큰 도입 + 색 리터럴 1:1 치환 (시각 무변경)
+- [x] 03-02-visual-polish-PLAN.md — soft blue 토큰 값 + 오늘/다른 달 셀 재구성 (WCAG AA, opacity 금지)
 
 **Guards (PITFALLS 인용):**
 - localStorage 키/스키마 무변경: `grep "todo-gsd:v" todo.js` 1줄, `grep "SCHEMA_VERSION" todo.js` 결과 변화 없음
