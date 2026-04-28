@@ -8,21 +8,38 @@
 
 날짜 단위로 할 일을 빠르게 적고 보고, 새로고침해도 그대로 남아 있어야 한다.
 
+## Current Milestone: v1.1 UX 다듬기
+
+**Goal:** v1에서 만든 달력 Todo 앱의 시각·인터랙션·접근성을 다듬어, 매일 쓰기 거슬리지 않는 완성도까지 끌어올린다.
+
+**Target features:**
+- 달력 시각 디자인 — 오늘 날짜 강조(배경색), 다른 달 셀 흐리게, 라이트 미니멀 톤
+- 할 일 패널 인터랙션 — 완료 항목 취소선+흐리게, 삭제 즉시 반영, Enter 입력 흐름 정돈
+- 날짜 셀 정보 밀도 — 숫자 배지 스타일 다듬기, 모두 완료된 날짜 체크 아이콘 표시
+- 키보드/접근성 — ←/→/T 단축키, 방향키 그리드 네비게이션, aria-label 정비
+
 ## Requirements
 
 ### Validated
 
-(아직 없음 — 배포 후 검증)
+<!-- Shipped and confirmed valuable. -->
+
+- ✓ 월간 달력 뷰 표시 및 월 이동 — Phase 1
+- ✓ 날짜 클릭 시 해당 날짜의 할 일 목록 보기 — Phase 2
+- ✓ 할 일 추가 — Phase 2
+- ✓ 할 일 완료 토글 — Phase 2
+- ✓ 할 일 삭제 — Phase 2
+- ✓ 각 날짜 셀에 할 일 개수 표시 — Phase 2
+- ✓ 새로고침 후에도 데이터 유지 (localStorage) — Phase 2
 
 ### Active
 
-- [ ] 월간 달력 뷰 표시 및 월 이동
-- [ ] 날짜 클릭 시 해당 날짜의 할 일 목록 보기
-- [ ] 할 일 추가
-- [ ] 할 일 완료 토글
-- [ ] 할 일 삭제
-- [ ] 각 날짜 셀에 할 일 개수 표시
-- [ ] 새로고침 후에도 데이터 유지 (localStorage)
+<!-- Current scope. Building toward these in v1.1. -->
+
+- [ ] 달력 시각 디자인 다듬기 (오늘 강조, 다른 달 셀, 컬러 톤)
+- [ ] 할 일 패널 인터랙션 다듬기 (완료 표현, 삭제 동작, 입력 흐름)
+- [ ] 날짜 셀 정보 밀도 향상 (배지 스타일, 모두 완료 표시)
+- [ ] 키보드 단축키 및 접근성 (←/→/T, 방향키 네비, aria)
 
 ### Out of Scope
 
@@ -31,24 +48,31 @@
 - 알림/리마인더 — 요청 범위 외
 - 반복 일정, 태그, 우선순위 — v1 단순화
 - 모바일 네이티브 앱 — 웹 우선
+- 다크 모드 — v1.1 범위 초과 (테마 시스템 도입 비용)
+- 모바일 반응형/터치 최적화 — v1.1 범위 외, 데스크톱 UX 우선
+- 빈 상태/온보딩 안내 — v1.1 범위 외
 
 ## Context
 
 - 개인용 단일 사용자 웹 앱
 - 데이터 저장: 브라우저 localStorage
 - 별도 백엔드 없음
+- v1 기능 골격 완성됨 (Phase 1, 2). v1.1은 표현·인터랙션·접근성 계층 다듬기로 데이터 모델 변경 없음.
 
 ## Constraints
 
 - **Tech stack**: 브라우저에서 동작하는 정적 웹 앱 (HTML/CSS/JS) — 백엔드 없음, 단순성 우선
 - **Persistence**: localStorage — 단일 브라우저 한정 가정
+- **No new dependencies**: v1.1에서도 프레임워크/빌드 도구 도입 금지 — 정적 자산만
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| localStorage 사용 | 1인용·새로고침 유지 요구 충족, 백엔드 불필요 | — Pending |
-| 정적 웹 앱(HTML/CSS/JS) | 범위가 작아 프레임워크 오버헤드 회피 | — Pending |
+| localStorage 사용 | 1인용·새로고침 유지 요구 충족, 백엔드 불필요 | ✓ Good (Phase 2 검증) |
+| 정적 웹 앱(HTML/CSS/JS) | 범위가 작아 프레임워크 오버헤드 회피 | ✓ Good |
+| v1.1은 UX 다듬기로 한정 | 기능 추가 전에 매일 쓰기 좋은 완성도 확보 | — Pending |
+| 다크 모드 보류 | 테마 시스템 도입은 별도 마일스톤 가치 | — Pending |
 
 ## Evolution
 
@@ -68,4 +92,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-28 after initialization*
+*Last updated: 2026-04-28 after starting milestone v1.1*
