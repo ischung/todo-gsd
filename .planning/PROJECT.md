@@ -2,7 +2,11 @@
 
 ## What This Is
 
-월간 달력 화면에서 날짜를 클릭해 그 날짜의 할 일을 추가/완료/삭제할 수 있는 1인용 웹 앱. 각 날짜 셀에는 할 일 개수가 표시되며, 새로고침해도 데이터가 유지된다.
+월간 달력 화면에서 날짜를 클릭해 그 날짜의 할 일을 추가/완료/삭제할 수 있는 1인용 정적 웹 앱. 각 날짜 셀에는 할 일 개수가 99+ 클램프와 함께 표시되며, localStorage 기반으로 새로고침해도 데이터가 유지된다.
+
+## Current State
+
+**Shipped:** v1 MVP (2026-04-28) — 모든 9개 v1 요구사항 Validated. 672 LOC, 4 files, UAT 14/14 pass.
 
 ## Core Value
 
@@ -12,17 +16,17 @@
 
 ### Validated
 
-(아직 없음 — 배포 후 검증)
+- [x] 월간 달력 뷰 표시 및 월 이동 — Phase 1 UAT 통과 (2026-04-28, CAL-01/02/04)
+- [x] 날짜 클릭 시 해당 날짜의 할 일 목록 보기 — Phase 2 UAT 통과 (2026-04-28, TODO-01)
+- [x] 할 일 추가 — Phase 2 UAT 통과 (2026-04-28, TODO-02)
+- [x] 할 일 완료 토글 — Phase 2 UAT 통과 (2026-04-28, TODO-03)
+- [x] 할 일 삭제 — Phase 2 UAT 통과 (2026-04-28, TODO-04)
+- [x] 각 날짜 셀에 할 일 개수 표시 (99+ 클램프) — Phase 2 UAT 통과 (2026-04-28, CAL-03)
+- [x] 새로고침 후에도 데이터 유지 (localStorage) — Phase 2 UAT 통과 (2026-04-28, PERSIST-01)
 
 ### Active
 
-- [ ] 월간 달력 뷰 표시 및 월 이동
-- [ ] 날짜 클릭 시 해당 날짜의 할 일 목록 보기
-- [ ] 할 일 추가
-- [ ] 할 일 완료 토글
-- [ ] 할 일 삭제
-- [ ] 각 날짜 셀에 할 일 개수 표시
-- [ ] 새로고침 후에도 데이터 유지 (localStorage)
+(없음 — 마일스톤 v1 모든 요구사항 Validated)
 
 ### Out of Scope
 
@@ -47,8 +51,10 @@
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| localStorage 사용 | 1인용·새로고침 유지 요구 충족, 백엔드 불필요 | — Pending |
-| 정적 웹 앱(HTML/CSS/JS) | 범위가 작아 프레임워크 오버헤드 회피 | — Pending |
+| localStorage 사용 | 1인용·새로고침 유지 요구 충족, 백엔드 불필요 | ✓ Validated (Phase 2) |
+| 정적 웹 앱(HTML/CSS/JS) | 범위가 작아 프레임워크 오버헤드 회피 | ✓ Validated (Phase 1, 2) |
+| 배지 카운트 99+ 클램프 | 한 날짜 100개 이상 시 레이아웃 보호 | ✓ Validated (Phase 2) |
+| innerHTML + escapeHtml | XSS 방어를 데이터 레이어에서 차단 | ✓ Validated (Phase 2) |
 
 ## Evolution
 
@@ -68,4 +74,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-28 after initialization*
+*Last updated: 2026-04-28 — v1 MVP 마일스톤 shipped, archived to milestones/*
